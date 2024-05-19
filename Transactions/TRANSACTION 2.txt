@@ -1,0 +1,11 @@
+START TRANSACTION;
+
+INSERT INTO games (game_id, name, kind, chance, jackpot_chance, bonus, jackpot, date_added)
+VALUES (2001, ‘New Game’, ‘Casino game’, 0.5, 0.01, 10.0, 5000.0, CURDATE());
+UPDATE most_played
+SET game_id = 2001, traffic = traffic + 1
+WHERE most_played_id = 1;
+INSERT INTO user_games (user_id, game_id)
+VALUES (5001, 2001);
+
+COMMIT;
