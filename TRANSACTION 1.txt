@@ -1,0 +1,17 @@
+START TRANSACTION;
+
+BEGIN
+  INSERT INTO game_winners (game_winners_id, game_id, user_id)
+  VALUES (1, 1001, 5001);
+  UPDATE users
+  SET balance = balance + 100.0
+  WHERE user_id =5001;
+  INSERT INTO transaction (transaction_id, size, date, user_id)
+  VALUES (1, 100.0, CURDATE(), 5001);
+
+  COMMIT;
+
+EXCEPTION
+  WHEN OTHERS THEN
+    ROLLBACK;
+END;
