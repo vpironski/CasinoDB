@@ -48,7 +48,7 @@ DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `databet`.`bank_accounts` (
   `bank_account_id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_id` INT(10) UNSIGNED NOT NULL,
-  `account_number` VARCHAR(20) NOT NULL,
+  `account_number` VARCHAR(34) NOT NULL,
   `bank_name` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`bank_account_id`),
   UNIQUE INDEX `user_id_UNIQUE` (`user_id` ASC),
