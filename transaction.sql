@@ -2,14 +2,14 @@ START TRANSACTION;
 
 BEGIN
   INSERT INTO game_winners (game_id, user_id)
-  VALUES (1001, 5001);
+  VALUES (3, 2);
 
   UPDATE users
-  SET balance = balance + (SELECT jackpot FROM games WHERE game_id = 1001)
-  WHERE user_id = 5001;
+  SET balance = balance + (SELECT jackpot FROM games WHERE game_id = 3)
+  WHERE user_id = 2;
 
   INSERT INTO transaction (size, date, user_id)
-  VALUES ((SELECT jackpot FROM games WHERE game_id = 1001), CURDATE(), 5001);
+  VALUES ((SELECT jackpot FROM games WHERE game_id = 3), CURDATE(), 2);
 
   COMMIT;
 EXCEPTION
@@ -19,6 +19,7 @@ END;
 
 -- SECOND TRANSACTION 
  START TRANSACTION;
+
 BEGIN
 INSERT INTO games (name, kind, chance, jackpot_chance, bonus, jackpot, date_added)
 VALUES ('New Game', 'Casino game', 0.5, 0.01, 10.0, 5000.0, CURDATE());
