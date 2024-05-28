@@ -1,4 +1,4 @@
-CREATE INDEX idx_username ON user (username);
+CREATE INDEX idx_username ON users (username);
 
 CREATE INDEX idx_email ON users (email);
 
